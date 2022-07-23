@@ -1,5 +1,7 @@
 package apptest;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import conexaojdbc.SingleConnection;
@@ -21,4 +23,33 @@ public class TesteBancoJdbc {
 		usercursoDAO.salvar(usercursojava);
 	}
 
+	@Test
+	public void initListar() {
+
+		UsercursoDAO dao = new UsercursoDAO();
+
+		try {
+			List<Usercursojava> list = dao.listar();
+			for (Usercursojava usercursojava : list) {
+				System.out.println(usercursojava);
+				System.out.println("-------------------------------");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	@Test
+	public void initBuscar() {
+		
+		UsercursoDAO dao = new UsercursoDAO();
+		try {
+			Usercursojava usercursojava = dao.buscar(2L);
+		System.out.println(usercursojava);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		
+	}
 }

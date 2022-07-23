@@ -23,6 +23,10 @@ public class Usercursojava {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Override
+	public String toString() {
+		return "Usercursojava [id=" + id + ", nome=" + nome + ", email=" + email + "]";
+	}
 	
 	
 
