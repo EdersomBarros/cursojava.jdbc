@@ -88,15 +88,35 @@ public class UsercursoDAO {
 
 	public void atualizar(Usercursojava usercursojava) {
 		try {
-			String sql = "update usercursojava set nome = ? where id = "
-		+ usercursojava.getId();
-			
+			String sql = "update usercursojava set nome = ? where id = " + usercursojava.getId();
+
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setString(1, usercursojava.getNome());
 
 			statement.execute();
 			connection.commit();
+
+		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+
+	}
+
+	public void deletar(Long id) {
+		try {
+			String sql = "delete from usercursojava where id = "+id;
+			PreparedStatement preparedStatement = 
+					connection.prepareStatement(sql);
+			preparedStatement.execute();
 			
+			connection.commit();
+			
+
 		} catch (Exception e) {
 			try {
 				connection.rollback();
