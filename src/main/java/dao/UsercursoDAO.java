@@ -76,16 +76,37 @@ public class UsercursoDAO {
 
 		ResultSet resultado = statement.executeQuery();
 
-		while (resultado.next()) {//vai retornar apenas um ou nenhum
+		while (resultado.next()) {// vai retornar apenas um ou nenhum
 
 			retorno.setId(resultado.getLong("id"));
 			retorno.setNome(resultado.getString("nome"));
 			retorno.setEmail(resultado.getString("email"));
 
-
 		}
 
 		return retorno;
+	}
+
+	public void atualizar(Usercursojava usercursojava) {
+		try {
+			String sql = "update usercursojava set nome = ? where id = "
+		+ usercursojava.getId();
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, usercursojava.getNome());
+
+			statement.execute();
+			connection.commit();
+			
+		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+
 	}
 
 }

@@ -39,17 +39,32 @@ public class TesteBancoJdbc {
 		}
 
 	}
+
 	@Test
 	public void initBuscar() {
-		
+
 		UsercursoDAO dao = new UsercursoDAO();
 		try {
 			Usercursojava usercursojava = dao.buscar(2L);
-		System.out.println(usercursojava);
+			System.out.println(usercursojava);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
-		
-		
+		}
+
+	}
+
+	@Test
+	public void initAtualizar() {
+		try {
+			UsercursoDAO dao = new UsercursoDAO();
+
+			Usercursojava objetoBanco = dao.buscar(5L);
+			
+			objetoBanco.setNome("nome mudado com método atualizar");
+
+			dao.atualizar(objetoBanco);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
