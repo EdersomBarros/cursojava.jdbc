@@ -16,7 +16,6 @@ public class TesteBancoJdbc {
 		UsercursoDAO usercursoDAO = new UsercursoDAO();
 		Usercursojava usercursojava = new Usercursojava();
 
-		usercursojava.setId(6L);
 		usercursojava.setNome("Johnva");
 		usercursojava.setEmail("jahho@hotmail.com");
 

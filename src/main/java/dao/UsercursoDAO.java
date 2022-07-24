@@ -22,12 +22,11 @@ public class UsercursoDAO {
 
 	public void salvar(Usercursojava usercursojava) {
 		try {
-			String sql = "insert into usercursojava (id,nome,email) values(?,?,?)";
+			String sql = "insert into usercursojava (nome,email) values(?,?)";
 			PreparedStatement insert = connection.prepareStatement(sql);
 
-			insert.setLong(1, usercursojava.getId());
-			insert.setString(2, usercursojava.getNome());
-			insert.setString(3, usercursojava.getEmail());
+			insert.setString(1, usercursojava.getNome());
+			insert.setString(2, usercursojava.getEmail());
 			insert.execute();
 			connection.commit(); // salva no banco
 
