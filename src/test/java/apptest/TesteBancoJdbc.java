@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import conexaojdbc.SingleConnection;
 import dao.UsercursoDAO;
+import model.Telefone;
 import model.Usercursojava;
 
 public class TesteBancoJdbc {
@@ -58,7 +59,7 @@ public class TesteBancoJdbc {
 			UsercursoDAO dao = new UsercursoDAO();
 
 			Usercursojava objetoBanco = dao.buscar(5L);
-			
+
 			objetoBanco.setNome("nome mudado com método atualizar");
 
 			dao.atualizar(objetoBanco);
@@ -66,19 +67,37 @@ public class TesteBancoJdbc {
 			e.printStackTrace();
 		}
 	}
+
 	@Test
 	public void initDeletar() {
-		
+
 		try {
 			UsercursoDAO dao = new UsercursoDAO();
 			dao.deletar(7L);
-			
-			
+
 		} catch (Exception e) {
 
+		} 
+
+	}
+	@Test
+	public void testeInsertTelefone() {
 		
-		}
+		Telefone telefone = new Telefone();
+		telefone.setNumero("(55) 95555-6677");
+		telefone.setTipo("Comercial");
+		telefone.setUsuario(9L);
+		
+		UsercursoDAO dao = new UsercursoDAO();
+		dao.salvarTelefone(telefone);
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
 }
