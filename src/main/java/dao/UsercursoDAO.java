@@ -180,4 +180,31 @@ public class UsercursoDAO {
 
 	}
 
+	public void deleteFonesPorUser(Long idUser) {
+
+		try {
+			String sqlFone = "DELETE FROM telefoneuser WHERE usuariopessoa = " + idUser;
+
+			String sqlUser = "DELETE FROM usercursojava where id = " + idUser;
+
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlFone);
+			preparedStatement.executeUpdate();
+			connection.commit();
+			
+			preparedStatement=connection.prepareStatement(sqlUser);
+			preparedStatement.executeUpdate();
+			connection.commit();
+		
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+
+	}
+
 }
